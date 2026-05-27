@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Development Slide</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Prompt', sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    /* ขยายขนาดสไลด์ */
+    .slideshow-container{
+      width:1400px;
+      height:500px;
+      position:relative;
+      overflow:hidden;
+      border-radius:25px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    .mySlides{
+      display:none;
+      width:100%;
+      height:100%;
+      position:relative;
+      animation:fade 1s;
+    }
+
+    .mySlides img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(45%);
+      transform:scale(1.05);
+    }
+
+    .content{
+      position:absolute;
+      top:50%;
+      left:80px;
+      transform:translateY(-50%);
+      color:white;
+      z-index:2;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 22px;
+      background:#2563eb;
+      border-radius:40px;
+      font-size:16px;
+      margin-bottom:25px;
+      letter-spacing:1px;
+    }
+
+    .content h1{
+      font-size:64px;
+      margin-bottom:20px;
+      font-weight:600;
+      letter-spacing:1px;
+    }
+
+    .content p{
+      font-size:24px;
+      color:#e2e8f0;
+      width:700px;
+      line-height:1.8;
+    }
+
+    /* ปุ่ม */
+    .prev, .next{
+      cursor:pointer;
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      padding:18px;
+      color:white;
+      font-size:30px;
+      font-weight:bold;
+      background:rgba(255,255,255,0.15);
+      border-radius:50%;
+      transition:0.3s;
+      user-select:none;
+      z-index:5;
+    }
+
+    .prev{
+      left:25px;
+    }
+
+    .next{
+      right:25px;
+    }
+
+    .prev:hover,
+    .next:hover{
+      background:#2563eb;
+    }
+
+    /* จุด */
+    .dots{
+      position:absolute;
+      bottom:25px;
+      width:100%;
+      text-align:center;
+      z-index:10;
+    }
+
+    .dot{
+      height:15px;
+      width:15px;
+      margin:0 6px;
+      background:#94a3b8;
+      border-radius:50%;
+      display:inline-block;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .active,
+    .dot:hover{
+      background:#2563eb;
+      transform:scale(1.3);
+    }
+
+    @keyframes fade{
+      from{opacity:0.4}
+      to{opacity:1}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slideshow-container">
+
+    <!-- Slide 1 -->
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600" alt="">
+      
+      <div class="content">
+        <div class="badge">SOFTWARE DEVELOPMENT</div>
+        <h1>Modern Programming</h1>
+        <p>
+          เรียนรู้การเขียนโปรแกรมและพัฒนาแอปพลิเคชัน
+          ด้วยเทคโนโลยีสมัยใหม่สำหรับนักพัฒนายุคดิจิทัล
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600" alt="">
+      
+      <div class="content">
+        <div class="badge">WEB TECHNOLOGY</div>
+        <h1>Frontend & Backend</h1>
+        <p>
+          ออกแบบและพัฒนาเว็บไซต์อย่างมืออาชีพ
+          ด้วย HTML, CSS, JavaScript และฐานข้อมูล
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1600" alt="">
+      
+      <div class="content">
+        <div class="badge">SYSTEM ANALYSIS</div>
+        <h1>Software Engineering</h1>
+        <p>
+          วิเคราะห์ ออกแบบ และพัฒนาระบบซอฟต์แวร์
+          ตามมาตรฐานการพัฒนาระบบระดับองค์กร
+        </p>
+      </div>
+    </div>
+
+    <!-- ปุ่ม -->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!-- จุด -->
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n){
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n){
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n){
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      if(n > slides.length){
+        slideIndex = 1;
+      }
+
+      if(n < 1){
+        slideIndex = slides.length;
+      }
+
+      for(i = 0; i < slides.length; i++){
+        slides[i].style.display = "none";
+      }
+
+      for(i = 0; i < dots.length; i++){
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+    // Auto Slide
+    setInterval(() => {
+      plusSlides(1);
+    }, 4000);
+  </script>
+
+</body>
+</html>
